@@ -1,0 +1,31 @@
+@import "./variables";
+
+%shared {
+    width: 20px;
+    height: 20px;
+    border: 2.5px solid $color-default;
+    border-radius: 4px;
+    margin: 10px;
+    cursor: pointer;
+}
+.box {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+}
+
+.container {
+    @extend %shared;
+    &_checked {
+        @extend %shared;
+        border: 2.5px solid $color-hover;
+        background-color: $color-hover;
+        display: flex;
+    }
+    &_disabled {
+        @extend %shared;
+        cursor: default;
+        border: 2.5px solid $color-disabled;
+    }
+}
