@@ -23,8 +23,8 @@ h3,
 h4,
 h5,
 h6 {
-    color: $color-disabled;
-    font-size: inherit;
+    color: $color-hover;
+    font-size: 24px;
     font-weight: inherit;
 }
 button {
@@ -32,8 +32,11 @@ button {
 }
 
 a {
-    color: inherit;
+    cursor: pointer;
     text-decoration: none;
+    &:hover{
+        color: $color-hover;
+    }
 }
 
 * {

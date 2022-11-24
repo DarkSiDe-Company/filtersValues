@@ -1,40 +1,20 @@
-import Button from "../components/button";
-import Radio from "../components/radio";
-import CheckBox from "../components/checkBox";
 import styles from "../styles/Home.module.scss";
+import { useRouter } from "next/router";
 
 export default function Home() {
+    const router = useRouter();
     return (
         <div className={styles.container}>
-            <a href="">Ссылка без декора</a>
+            <h1>Тут будут тесты</h1>
             <p>
-                <h1>Кнопки</h1>
-                <Button text="Активная кнопка" disable={false} />
-                <Button text="Неактивная кнопка" disable={true} />
+                <a onClick={() => router.push("test/0")}>
+                    Перейти к первому тесту
+                </a>
             </p>
             <p>
-                <h1>Радио</h1>
-                <Radio disabled={false} checked={false} />
-                <Radio disabled={true} checked={false} />
-                <Radio disabled={false} checked={true} />
-            </p>
-            <p>
-                <h1>Чекбокс</h1>
-                <CheckBox
-                    disabled={false}
-                    checked={false}
-                    text={"Я какой-то текст"}
-                />
-                <CheckBox
-                    disabled={true}
-                    checked={false}
-                    text={"Я не какой-то текст"}
-                />
-                <CheckBox
-                    disabled={false}
-                    checked={true}
-                    text={"Я есть текст"}
-                />
+                <a onClick={() => router.push("test/1")}>
+                    Перейти ко второму тесту
+                </a>
             </p>
         </div>
     );

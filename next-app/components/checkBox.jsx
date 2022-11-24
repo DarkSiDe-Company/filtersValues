@@ -5,9 +5,9 @@ export default function CheckBox(props) {
     return props.disabled ? (
         <div className={styles.box}>
             <div className={styles.container_disabled}></div>
-            <div>{props.text}</div>
+            <div className={styles.text}>{props.text}</div>
         </div>
-    ) : props.checked ? (
+    ) : props.checked === true ? (
         <div className={styles.box}>
             <div className={styles.container_checked}>
                 <svg
@@ -25,11 +25,12 @@ export default function CheckBox(props) {
                     />
                 </svg>
             </div>
-            <div>{props.text}</div>
+            <div className={styles.text}>{props.text}</div>
         </div>
     ) : (
         <div className={styles.box}>
-            <div className={styles.container}></div> <div>{props.text}</div>
+            <div className={styles.container}></div>
+            <div className={styles.text}>{props.text}</div>
         </div>
     );
 }
