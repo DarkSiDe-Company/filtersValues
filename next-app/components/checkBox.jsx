@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/checkBox.module.scss";
 
 export default function CheckBox(props) {
+    const [checked, setChecked] = useState(props.checked)
     return props.disabled ? (
         <div className={styles.box}>
             <div className={styles.container_disabled}></div>
             <div className={styles.text}>{props.text}</div>
         </div>
-    ) : props.checked === true ? (
+    ) : checked === true ? (
         <div className={styles.box}>
             <div className={styles.container_checked}>
                 <svg

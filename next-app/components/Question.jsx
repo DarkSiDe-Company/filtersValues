@@ -1,13 +1,20 @@
 import React, { useState } from "react";
-import CheckBox from "./checkBox";
 
 import styles from "../styles/qusetion.module.scss";
 
+let arrayAnswers = [];
+
 export default function Question(props) {
+    const [checked, setChecked] = useState(null);
     const [currentQuestion, setCurrentQuestion] = useState(
         props.questions[0].id
     );
     const [ans, setAns] = useState(false);
+
+    function changeChecked() {
+        setChecked(event.target.id);
+        console.log(event.target.id === checked);
+    }
 
     function nextQuestion() {
         if (currentQuestion < props.questions.length - 1) {
@@ -23,6 +30,7 @@ export default function Question(props) {
 
     function clickAnswer() {
         setAns(!ans);
+        console.log("text");
     }
     return (
         <>
@@ -38,12 +46,16 @@ export default function Question(props) {
                 </div>
                 <form className={styles.answers}>
                     {props.questions[currentQuestion].answers.map((answer) => (
-                        <CheckBox
-                            checked={ans}
-                            text={answer.answerText}
-                            key={answer.answerId}
-                            onClick={clickAnswer}
-                        />
+                        <div key={answer.answerId}>
+                            <input
+                                type="radio"
+                                value={answer.answerText}
+                                id={answer.answerId}
+                                checked={checked === answer.answerId}
+                                onChange={changeChecked}
+                            ></input>
+                            <label>{answer.answerText}</label>
+                        </div>
                     ))}
                 </form>
                 <div className={styles.buttons}>
@@ -53,4 +65,13 @@ export default function Question(props) {
             </div>
         </>
     );
+}
+
+{
+    /* <CheckBox
+                            checked={ans}
+                            text={answer.answerText}
+                            key={answer.answerId}
+                            onClick={clickAnswer}
+                        /> */
 }
